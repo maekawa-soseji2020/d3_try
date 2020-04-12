@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>D3 Try-1</title>
+
+</head>
+
+<body>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script>
+    var data0 = [
+      { "name": "A", "value": 1 },
+      { "name": "B", "value": 2 },
+      { "name": "C", "value": 3 },
+      { "name": "D", "value": 5 }];
+    var fetchreq = new XMLHttpRequest();
+    fetchreq.open("GET", "values1.json");
+    fetchreq.responseType = "application/json";
+    fetchreq.onload = function() {
+      var data = fetchreq.response;
+    }
+    fetchreq.send();
+    //var data = FileAttachment("values1.json");
+    var ppp = d3.select("body")
+  .selectAll("p")
+  .data(data);
+  //  .text(function(d) { return "I’m number " + d + "!"; });
+
+  ppp.enter().append("p")
+    .text(function(d) { return "I’m number " + d.name + "!"; });
+  ppp.exit().remove();
+  </script>
+  <script>
+    values = FileAttachment("values1.json").json();
+    d3.select("body").selectAll("p").data(values).enter().append("p").text(function(d) { return "#3 = "+values[3]; });//import {chart as chart1} with {values as data} from "@d3/histogram"
+  </script>
+ <p>ほげ</p>
+</body>
+
+</html>
