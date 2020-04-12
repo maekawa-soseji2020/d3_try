@@ -11,32 +11,25 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script>
     var data0 = [
-      { "name": "A", "value": 1 },
-      { "name": "B", "value": 2 },
-      { "name": "C", "value": 3 },
-      { "name": "D", "value": 5 }];
+      { "name": "x", "value": 9 },
+      { "name": "y", "value": 8 },
+      { "name": "z", "value": 7 },];
     var fetchreq = new XMLHttpRequest();
-    fetchreq.open("GET", "values1.json");
-    fetchreq.responseType = "application/json";
+    fetchreq.open("GET", "https://raw.githubusercontent.com/maekawa-soseji2020/d3_try/master/try1/values1.json");
+    fetchreq.responseType = "json";
+    var data = data0;
     fetchreq.onload = function() {
-      var data = fetchreq.response;
+      data = fetchreq.response;
+      var ppp = d3.select("body")
+  .selectAll("p")
+  .data(data).enter().append("p")
+    .text(function(d) { return "I’m " + d.name + ", and my value is " + d.value + " !"; });
+  ppp.exit().remove();
     }
     fetchreq.send();
     //var data = FileAttachment("values1.json");
-    var ppp = d3.select("body")
-  .selectAll("p")
-  .data(data);
-  //  .text(function(d) { return "I’m number " + d + "!"; });
-
-  ppp.enter().append("p")
-    .text(function(d) { return "I’m number " + d.name + "!"; });
-  ppp.exit().remove();
+    
   </script>
-  <script>
-    values = FileAttachment("values1.json").json();
-    d3.select("body").selectAll("p").data(values).enter().append("p").text(function(d) { return "#3 = "+values[3]; });//import {chart as chart1} with {values as data} from "@d3/histogram"
-  </script>
- <p>ほげ</p>
 </body>
 
 </html>

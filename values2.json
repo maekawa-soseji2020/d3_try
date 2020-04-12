@@ -1,0 +1,8 @@
+{ "nodes": [
+    { "name": "A", "value": 1, "mol-type": "type1" },
+    { "name": "B", "value": 2, "mol-type": "type4" },
+    { "name": "C", "value": 3, "mol-type": "type3" },
+    { "name": "D", "value": 5, "mol-type": "type2" }
+  ],
+  "edges" : [ ]
+}
